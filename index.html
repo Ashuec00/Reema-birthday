@@ -1,12 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Reema 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ffe6f0, #fff5e6);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1506784365847-bbad939e9335') center/cover no-repeat;
+      color: white;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    header h1 {
+      font-size: 3rem;
+      z-index: 1;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    header p {
+      font-size: 1.3rem;
+      margin-top: 10px;
+      z-index: 1;
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .message {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+    }
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+    }
+    .gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .cake {
+      margin-top: 40px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    .wish {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #ff4081;
+      display: none;
+    }
+    footer {
+      background: #ffccd5;
+      padding: 20px;
+      text-align: center;
+      font-size: 1rem;
+    }
+    button.music-btn {
+      background: #ff4081;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>🎉 Happy Birthday Reema 💖</h1>
-  <p>You make the world brighter just by being in it 🌸</p>
-</body>
+  <header>
+    <h1>🎉 Happy Birthday Reema 💖</h1>
+    <p>You make the world brighter just by being in it 🌸</p>
+  </header>  <section>
+    <h2>A Special Note</h2>
+    <p class="message">On this special day, I just want to remind you how truly wonderful you are. Your kindness, laughter, and love light up the lives of everyone around you. May this birthday be as magical as you are 💕.</p>
+  </section>  <section>
+    <h2>Our Memories 📸</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Memory 1">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Memory 2">
+      <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d" alt="Memory 3">
+    </div>
+  </section>  <section>
+    <h2>Make a Wish 🎂</h2>
+    <div class="cake" onclick="blowCandles()">🎂 Click to blow the candles 🎂</div>
+    <div class="wish" id="wish">🌠 Make a wish, Reema! 🌠</div>
+  </section>  <footer>
+    Made with ❤️ by Ashu
+    <br>
+    <button class="music-btn" onclick="toggleMusic()">🔊 Play Music</button>
+  </footer>  <audio id="bg-music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>  <script>
+    function blowCandles() {
+      document.getElementById("wish").style.display = "block";
+    }
+    function toggleMusic() {
+      const music = document.getElementById("bg-music");
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+  </script></body>
 </html>
