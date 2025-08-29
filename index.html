@@ -1,109 +1,371 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Birthday Reema 🎉</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #ffe6f0, #fff5e6);
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+    :root{
+      --bg:#fff7fb;          /* pastel pink background */
+      --card:#ffffff;        /* card surface */
+      --ink:#3b2a3d;         /* text color */
+      --accent:#ff7eb6;      /* primary accent */
+      --accent-2:#8a7dff;    /* secondary accent */
+      --muted:#6e6471;       /* muted text */
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:20px;
     }
-    header {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: url('https://images.unsplash.com/photo-1506784365847-bbad939e9335') center/cover no-repeat;
-      color: white;
-      position: relative;
-    }
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.4);
-    }
-    header h1 {
-      font-size: 3rem;
-      z-index: 1;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    header p {
-      font-size: 1.3rem;
-      margin-top: 10px;
-      z-index: 1;
-    }
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .message {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.8;
-    }
-    .gallery {
-      display: flex;
-      overflow-x: auto;
-      gap: 20px;
-      padding: 20px;
-    }
-    .gallery img {
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .cake {
-      margin-top: 40px;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-    .wish {
-      margin-top: 20px;
-      font-size: 1.5rem;
-      color: #ff4081;
-      display: none;
-    }
-    footer {
-      background: #ffccd5;
-      padding: 20px;
-      text-align: center;
-      font-size: 1rem;
-    }
-    button.music-btn {
-      background: #ff4081;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-top: 20px;
-    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:var(--bg)}
+    a{color:var(--accent)}/* ===== Layout ===== */
+.container{max-width:1080px;margin:0 auto;padding:24px}
+section{margin:48px 0}
+h1,h2,h3{margin:0 0 12px}
+h1{font-family:'Sacramento', cursive;font-size:64px;line-height:1.1}
+h2{font-size:28px}
+p{color:var(--muted)}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* ===== Hero with Countdown ===== */
+.hero{position:relative;overflow:hidden;padding:40px}
+.hero-inner{display:grid;gap:18px;align-items:center;grid-template-columns:1.2fr .8fr}
+@media (max-width:900px){.hero-inner{grid-template-columns:1fr}}
+
+.countdown{display:flex;gap:14px;flex-wrap:wrap}
+.time-box{background:linear-gradient(180deg,#ffffff,#ffe8f2);border-radius:16px;padding:16px 14px;min-width:90px;text-align:center;box-shadow:var(--shadow)}
+.time-box .num{font-variant-numeric:tabular-nums;font-weight:800;font-size:40px}
+.time-box .lbl{font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{appearance:none;border:0;border-radius:999px;padding:14px 20px;font-weight:700;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff}
+.btn-ghost{background:#ffffff;color:var(--ink);box-shadow:var(--shadow)}
+
+/* Balloons */
+.balloon{position:absolute;bottom:-120px;width:50px;height:70px;border-radius:25px 25px 25px 25px;background:var(--accent);opacity:.6;animation:float 10s linear infinite}
+.balloon:after{content:"";position:absolute;left:50%;top:66px;width:2px;height:80px;background:rgba(0,0,0,.08)}
+.balloon.b2{left:20%;background:var(--accent-2);animation-duration:12s}
+.balloon.b3{left:60%;background:#ffd166;animation-duration:11s}
+.balloon.b4{left:85%;background:#6ee7b7;animation-duration:13s}
+@keyframes float{0%{transform:translateY(0) translateX(0)} 50%{transform:translateY(-60vh) translateX(20px)} 100%{transform:translateY(-120vh) translateX(-10px)}}
+
+/* Wishes */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+.wish{padding:18px;position:relative;overflow:hidden}
+.wish .from{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.avatar{width:40px;height:40px;border-radius:50%;background:#ffe4ef;display:grid;place-items:center;font-weight:700}
+.wish .msg{line-height:1.5}
+.wish:hover{transform:translateY(-2px);transition:.2s}
+
+/* Memories Gallery */
+.gallery{display:flex;gap:12px;overflow:auto;padding:12px}
+.gallery img{height:180px;flex:0 0 auto;border-radius:14px;box-shadow:var(--shadow);object-fit:cover}
+
+/* Before/Now slider */
+.compare{position:relative;max-width:740px;margin:14px auto}
+.compare img{display:block;width:100%;border-radius:16px}
+.compare .top{position:absolute;left:0;top:0;height:100%;overflow:hidden;border-radius:16px}
+.compare input[type=range]{width:100%;position:absolute;left:0;bottom:-20px}
+
+/* Quiz */
+.quiz{padding:18px}
+.q{margin:12px 0}
+.quiz .result{margin-top:8px;font-weight:700}
+
+/* Gift Box */
+.gift{display:grid;place-items:center;padding:24px;text-align:center}
+.gift-box{width:110px;height:90px;background:#ffd1e3;border-radius:12px;position:relative;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.gift-box:before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:16px;height:100%;background:rgba(255,126,182,.45)}
+.gift-box:after{content:"🎀";position:absolute;top:-28px;left:50%;transform:translateX(-50%);font-size:34px}
+.gift-box:hover{transform:translateY(-3px)}
+.gift-msg{display:none;margin-top:12px}
+
+/* Friendship Meter */
+.meter{padding:18px}
+.meter .bar{height:14px;border-radius:999px;background:#f0e7ff;overflow:hidden}
+.meter .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width 1.2s ease}
+
+/* Footer Starfield */
+.sky{position:relative;height:280px;border-radius:16px;overflow:hidden}
+canvas#stars{position:absolute;inset:0}
+.closing{text-align:center;padding:20px;position:relative;z-index:2}
+
   </style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>🎉 Happy Birthday Reema 💖</h1>
-    <p>You make the world brighter just by being in it 🌸</p>
-  </header>  <section>
-    <h2>A Special Note</h2>
+  <!-- Confetti Canvas -->
+  <canvas id="confetti" style="position:fixed;inset:0;pointer-events:none;z-index:9999"></canvas>  <div class="container">
+    <!-- ===== HERO ===== -->
+    <section class="hero card" id="hero">
+      <div class="balloon b1" style="left:5%"></div>
+      <div class="balloon b2"></div>
+      <div class="balloon b3"></div>
+      <div class="balloon b4"></div>
+      <div class="hero-inner">
+        <div>
+          <h1>Happy Birthday Reema ✨</h1>
+          <p>Counting down to your special day — <strong>2nd October</strong>! When the timer hits zero, get ready for fireworks, music, and lots of love. 💖</p>
+          <div class="countdown" id="countdown">
+            <div class="time-box"><div class="num" id="dd">00</div><div class="lbl">Days</div></div>
+            <div class="time-box"><div class="num" id="hh">00</div><div class="lbl">Hours</div></div>
+            <div class="time-box"><div class="num" id="mm">00</div><div class="lbl">Minutes</div></div>
+            <div class="time-box"><div class="num" id="ss">00</div><div class="lbl">Seconds</div></div>
+          </div>
+          <div class="cta-row">
+            <button class="btn btn-primary" id="startSong">Press Me 🎵</button>
+            <button class="btn btn-ghost" onclick="document.getElementById('wishes').scrollIntoView({behavior:'smooth'})">Begin the Celebration ↓</button>
+          </div>
+          <audio id="song" preload="auto" src="your-personal-song.mp3"></audio>
+        </div>
+        <div class="card" style="padding:16px;text-align:center">
+          <h2 style="font-family:'Sacramento',cursive;font-size:40px;margin:12px 0">Reema</h2>
+          <p style="margin:0">You are loved more than you know. Here’s a tiny universe of memories and surprises — just for you. 🌟</p>
+          <img alt="cake" src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop" style="width:100%;border-radius:14px;margin-top:10px;object-fit:cover;max-height:260px"/>
+        </div>
+      </div>
+    </section><!-- ===== WISHES ===== -->
+<section id="wishes">
+  <h2>💌 Personal Wishes</h2>
+  <p>Tap a card to flip and reveal the full message.</p>
+  <div class="grid" id="wishGrid"></div>
+</section>
+
+<!-- ===== MEMORIES ===== -->
+<section id="memories">
+  <h2>📸 Memories</h2>
+  <div class="gallery card" id="gallery">
+    <!-- Replace with your photos -->
+    <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=900&auto=format&fit=crop" alt="memory1"/>
+    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=900&auto=format&fit=crop" alt="memory2"/>
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=900&auto=format&fit=crop" alt="memory3"/>
+    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=900&auto=format&fit=crop" alt="memory4"/>
+  </div>
+  <!-- Before/Now comparison -->
+  <div class="compare card">
+    <img src="https://images.unsplash.com/photo-1523779105320-d1cd346ff52f?q=80&w=1200&auto=format&fit=crop" alt="then-now bg">
+    <div class="top" id="cmpTop" style="width:50%">
+      <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" alt="then">
+    </div>
+    <input type="range" min="0" max="100" value="50" id="cmpRange" aria-label="Before After Slider">
+  </div>
+</section>
+
+<!-- ===== INTERACTIVE: GIFT + QUIZ ===== -->
+<section class="grid">
+  <div class="card gift">
+    <h2>🎁 Virtual Gift Box</h2>
+    <p>Click the box to open your surprise.</p>
+    <div class="gift-box" id="giftBox" title="Open me"></div>
+    <div class="gift-msg" id="giftMsg">
+      <h3>For You, Reema 💖</h3>
+      <p>We booked a spa day and brunch this weekend. Bring your brightest smile! ✨</p>
+      <p><a href="#" onclick="alert('Replace this with your real gift link 🙂')">Redeem Link</a></p>
+    </div>
+  </div>
+
+  <div class="card quiz">
+    <h2>🧠 Birthday Quiz</h2>
+    <form id="quizForm">
+      <div class="q">
+        <strong>1) What’s Reema’s favorite ice cream?</strong><br>
+        <label><input type="radio" name="q1" value="a"> Chocolate</label><br>
+        <label><input type="radio" name="q1" value="b"> Mango</label><br>
+        <label><input type="radio" name="q1" value="c"> Butterscotch</label>
+      </div>
+      <div class="q">
+        <strong>2) First trip together?</strong><br>
+        <label><input type="radio" name="q2" value="a"> Goa</label><br>
+        <label><input type="radio" name="q2" value="b"> Manali</label><br>
+        <label><input type="radio" name="q2" value="c"> Jaipur</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="result" id="quizResult"></div>
+    </form>
+  </div>
+
+  <div class="card meter">
+    <h2>💖 Friendship Meter</h2>
+    <label>Enter your name: <input id="friendName" placeholder="Type here" /></label>
+    <button class="btn btn-ghost" id="meterGo">Check</button>
+    <div style="margin-top:10px" class="bar"><div class="fill" id="meterFill"></div></div>
+    <p id="meterText" style="margin-top:8px"></p>
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="card sky">
+  <canvas id="stars"></canvas>
+  <div class="closing">
+    <h2 style="font-family:'Sacramento',cursive;font-size:44px">Reema, you’re our brightest star ✨</h2>
+    <p>Thank you for filling our lives with laughter and love. Wishing you all the happiness in the universe.</p>
+    <button class="btn btn-primary" id="popBalloons">Pop Balloons 🎈</button>
+  </div>
+</section>
+
+  </div>  <script>
+    /* =============================
+       COUNTDOWN to 2 Oct (local)
+    ============================== */
+    const target = new Date('Oct 2, 2025 00:00:00'); // change year if needed
+    const dd = document.getElementById('dd');
+    const hh = document.getElementById('hh');
+    const mm = document.getElementById('mm');
+    const ss = document.getElementById('ss');
+    let countdownDone = false;
+
+    const tick = () => {
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0 && !countdownDone){
+        countdownDone = true;
+        dd.textContent = '00'; hh.textContent='00'; mm.textContent='00'; ss.textContent='00';
+        celebrate();
+        try { document.getElementById('song').play(); } catch(e){}
+        return;
+      }
+      const d = Math.floor(diff/86400000);
+      const h = Math.floor((diff%86400000)/3600000);
+      const m = Math.floor((diff%3600000)/60000);
+      const s = Math.floor((diff%60000)/1000);
+      dd.textContent = String(d).padStart(2,'0');
+      hh.textContent = String(h).padStart(2,'0');
+      mm.textContent = String(m).padStart(2,'0');
+      ss.textContent = String(s).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    /* =============================
+       PERSONAL SONG BUTTON
+    ============================== */
+    document.getElementById('startSong').addEventListener('click', async () => {
+      const song = document.getElementById('song');
+      try{ await song.play(); }catch(e){ /* autoplay might be blocked until user gesture */ }
+      celebrate();
+    });
+
+    /* =============================
+       WISHES (editable data)
+    ============================== */
+    const wishes = [
+      { from:'Aisha', text:'Happy birthday Reema! Your kindness and laughter make every day brighter. 💕'},
+      { from:'Rahul', text:'To the best travel buddy — can’t wait for our next adventure! ✈️'},
+      { from:'Neha',  text:'Thank you for being my 3AM call person. You’re loved beyond words.'},
+      { from:'Kabir', text:'Keep shining, superstar! Coffee on me forever ☕'},
+      { from:'Maya',  text:'May your year be full of surprise hugs and sweet wins 🎉'},
+      { from:'Team',  text:'From all of us — you make work feel like a party. Happy birthday!'}
+    ];
+    const wishGrid = document.getElementById('wishGrid');
+    wishes.forEach(w => {
+      const el = document.createElement('div');
+      el.className = 'card wish';
+      el.innerHTML = `
+        <div class="from">
+          <div class="avatar">${w.from[0]}</div>
+          <strong>${w.from}</strong>
+        </div>
+        <div class="msg">${w.text}</div>
+      `;
+      el.addEventListener('click', ()=>{ el.classList.toggle('open'); })
+      wishGrid.appendChild(el);
+    });
+
+    /* =============================
+       BEFORE / NOW SLIDER
+    ============================== */
+    const range = document.getElementById('cmpRange');
+    const topImg = document.getElementById('cmpTop');
+    range.addEventListener('input', e => { topImg.style.width = e.target.value + '%'; });
+
+    /* =============================
+       QUIZ
+    ============================== */
+    document.getElementById('quizForm').addEventListener('submit', e =>{
+      e.preventDefault();
+      const a1 = new FormData(e.target).get('q1');
+      const a2 = new FormData(e.target).get('q2');
+      let score = 0;
+      if(a1==='b') score++; // Mango
+      if(a2==='c') score++; // Jaipur
+      const res = document.getElementById('quizResult');
+      res.textContent = `You scored ${score}/2 ${score===2?'— you know Reema by heart! 💖':'— cute try!'} `;
+      celebrateSmall();
+    });
+
+    /* =============================
+       GIFT BOX
+    ============================== */
+    const giftBox = document.getElementById('giftBox');
+    const giftMsg = document.getElementById('giftMsg');
+    giftBox.addEventListener('click', ()=>{
+      giftBox.style.transform = 'scale(0.92) rotate(-2deg)';
+      setTimeout(()=> giftBox.style.visibility = 'hidden', 220);
+      giftMsg.style.display = 'block';
+      celebrate();
+    });
+
+    /* =============================
+       FRIENDSHIP METER
+    ============================== */
+    document.getElementById('meterGo').addEventListener('click', ()=>{
+      const name = (document.getElementById('friendName').value||'Friend').trim();
+      const pct = 90 + Math.floor(Math.random()*11); // 90-100
+      document.getElementById('meterFill').style.width = pct + '%';
+      document.getElementById('meterText').textContent = `${name} & Reema — ${pct}% Besties Forever!`;
+      celebrateSmall();
+    });
+
+    /* =============================
+       STARFIELD + POP BALLOONS
+    ============================== */
+    const starCanvas = document.getElementById('stars');
+    const sctx = starCanvas.getContext('2d');
+    let stars=[]; function resizeStars(){ starCanvas.width=starCanvas.clientWidth; starCanvas.height=starCanvas.clientHeight; stars=[...Array(120)].map(()=>({x:Math.random()*starCanvas.width,y:Math.random()*starCanvas.height,r:Math.random()*1.8+0.4,spd:Math.random()*0.4+0.1}))}
+    window.addEventListener('resize', resizeStars); resizeStars();
+    (function animateStars(){ sctx.clearRect(0,0,starCanvas.width,starCanvas.height); stars.forEach(s=>{ sctx.beginPath(); sctx.arc(s.x,s.y,s.r,0,Math.PI*2); sctx.fillStyle='rgba(255,255,255,.85)'; sctx.fill(); s.y+=s.spd; if(s.y>starCanvas.height) s.y=0;}); requestAnimationFrame(animateStars); })();
+    document.getElementById('popBalloons').addEventListener('click', celebrate);
+
+    /* =============================
+       LIGHTWEIGHT CONFETTI / FIREWORKS
+    ============================== */
+    const c = document.getElementById('confetti');
+    const ctx = c.getContext('2d');
+    function resizeC(){ c.width=innerWidth; c.height=innerHeight }
+    addEventListener('resize', resizeC); resizeC();
+    let parts=[]; let active=false; let rafId;
+    function burst(x=innerWidth/2, y=innerHeight/2, n=120, power=6){
+      for(let i=0;i<n;i++){
+        const a = Math.random()*Math.PI*2;
+        const v = Math.random()*power;
+        parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:80+Math.random()*40,size:2+Math.random()*3});
+      }
+    }
+    function loop(){
+      ctx.clearRect(0,0,c.width,c.height);
+      parts.forEach(p=>{
+        p.vy+=0.08; p.x+=p.vx; p.y+=p.vy; p.life--; 
+        ctx.globalAlpha = Math.max(p.life/120,0);
+        ctx.fillStyle = `hsl(${(p.life*7)%360} 90% 60%)`;
+        ctx.fillRect(p.x,p.y,p.size,p.size);
+      });
+      parts = parts.filter(p=>p.life>0);
+      if(parts.length>0){ rafId = requestAnimationFrame(loop);} else { active=false; cancelAnimationFrame(rafId); ctx.clearRect(0,0,c.width,c.height); }
+    }
+    function celebrate(){
+      burst(innerWidth*0.3, innerHeight*0.4);
+      burst(innerWidth*0.7, innerHeight*0.4);
+      burst(innerWidth*0.5, innerHeight*0.6, 180, 8);
+      if(!active){ active=true; loop(); }
+    }
+    function celebrateSmall(){
+      burst(innerWidth*0.5, innerHeight*0.5, 80, 5);
+      if(!active){ active=true; loop(); }
+    }
+  </script></body>
+                                                                                             </html>    <h2>A Special Note</h2>
     <p class="message">On this special day, I just want to remind you how truly wonderful you are. Your kindness, laughter, and love light up the lives of everyone around you. May this birthday be as magical as you are 💕.</p>
   </section>  <section>
     <h2>Our Memories 📸</h2>
