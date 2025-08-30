@@ -180,6 +180,79 @@
     color: #4b4b4b;
     margin: 0;
   }
+  
+  /* --- NEW CSS FOR FRIENDS WISHES SECTION --- */
+  .friends-wishes {
+    padding: 40px 24px;
+    background: linear-gradient(135deg, #ff7ab3 0%, #8b5cff 60%);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wishes-header {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: var(--white);
+    margin: 0;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+
+  .wishes-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 24px;
+  }
+
+  .wish-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .friend-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+  }
+
+  .wish-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #4b4b4b;
+    margin: 0 0 8px;
+  }
+
+  .wish-card p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+    margin: 0;
+  }
+
+  @media (min-width: 800px) {
+    .wishes-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 </style>
 </head>
 <body>
@@ -258,7 +331,31 @@
     </div>
   </section>
 
-</div>
+  <section class="friends-wishes">
+    <div class="wishes-header">Wishes from Your Friends 🎉</div>
+    <div class="wishes-container">
+      
+      <div class="wish-card">
+        <img class="friend-img" src="https://raw.githubusercontent.com/Ashuec00/Reema-birthday/refs/heads/main/PM.jpg" alt="Profile picture of Priya">
+        <h3>Priya</h3>
+        <p>Happy Birthday, Reema! Hope you have a day as amazing as you are. Wishing you all the best this new year!</p>
+      </div>
+      
+      <div class="wish-card">
+        <img class="friend-img" src="https://raw.githubusercontent.com/Ashuec00/Reema-birthday/refs/heads/main/Aman.jpg" alt="Profile picture of Aman">
+        <h3>Aman</h3>
+        <p>Wishing you the happiest of birthdays, Reema! Thanks for all the great memories. Let's make this year even better!</p>
+      </div>
+
+      <div class="wish-card">
+        <img class="friend-img" src="https://raw.githubusercontent.com/Ashuec00/Reema-birthday/refs/heads/main/Ashu.jpg" alt="Profile picture of Ashu">
+        <h3>Ashu</h3>
+        <p>Happy Birthday to my favorite person! So glad we get to celebrate you. May your day be filled with cake and joy!</p>
+      </div>
+      
+    </div>
+  </section>
+  </div>
 
 <canvas id="confetti"></canvas>
 
